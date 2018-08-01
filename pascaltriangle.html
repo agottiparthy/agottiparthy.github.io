@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+		function checkInput(n){
+			let outputDiv= document.getElementById("output")
+			while(outputDiv.hasChildNodes()){
+				outputDiv.removeChild(outputDiv.lastChild)
+			}
+
+			if (isNaN(n)){
+				alert('Please Enter Positive Integer')
+			} else if (n <= 0){
+				alert('Please Enter Positive Integer')
+			} else {
+				displayPascal(n)
+			}
+		}
+		
+
+		function displayPascal(n){
+
+			var rowA = [0, 1, 0]
+			var rowB = [0]
+			var n = Number(n)
+			printRow(rowA)
+			for (var count = 1; count <= n-1; count++){
+				var lastIndex = rowA.length - 1
+				for (var index = 1; index <= lastIndex; index++){
+					rowB.push(rowA[index]+rowA[index-1])
+				}
+				rowB.push(0)
+				printRow(rowB)
+				rowA = rowB.slice()
+				rowB = [0]
+			}
+		}
+		
+		function printRow(row){
+			string = ""
+			for (var index = 1; index<row.length-1; index++){
+				string += row[index] + " "
+
+			}
+			var newItem = document.createElement("p")
+			var itemText = document.createTextNode(string)
+			newItem.appendChild(itemText)
+			document.getElementById("output").appendChild(newItem)
+		}
+	</script>
+	<style type="text/css">
+		body {
+			text-align: center;
+			background-color: lightgray;
+		}
+
+		input[type = text] {
+			height: 20px;
+			width: 100px;
+			border: none;
+		}
+
+		input[type = button]{
+			border-radius: 10px;
+			background-color: orange;
+			height: 20px;
+			width: 50px;
+			border: none;
+		}
+
+		div {
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<input type="text" name="input" id="inputRows" placeholder="Enter Integer Value" />
+	<input type="button" name="submit" value="Enter" onclick="checkInput(document.getElementById('inputRows').value)" />
+	<br>
+	<div id="output">
+	</div>
+</body>
+</html>
