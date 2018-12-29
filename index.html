@@ -1,206 +1,226 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
 
-	<link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300" rel="stylesheet">
-	<title> Ani Gottiparthy </title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
-	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+  <head>
 
-	<script type="text/javascript">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-		 /*  Typewriter Effect */
-		 var TxtType = function(el, toRotate, period) {
-		        this.toRotate = toRotate;
-		        this.el = el;
-		        this.loopNum = 0;
-		        this.period = parseInt(period, 100) || 200;
-		        this.txt = '';
-		        this.tick();
-		        this.isDeleting = false;
-		    };
+    <title>Ani Gottiparthy</title>
 
-		    TxtType.prototype.tick = function() {
-		        var i = this.loopNum % this.toRotate.length;
-		        var fullTxt = this.toRotate[i];
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-		        if (this.isDeleting) {
-		        this.txt = fullTxt.substring(0, this.txt.length - 1);
-		        } else {
-		        this.txt = fullTxt.substring(0, this.txt.length + 1);
-		        }
+    <!-- Custom Fonts -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
 
-		        this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+    <!-- Custom CSS -->
+    <link href="css/stylish-portfolio.css" rel="stylesheet">
 
-		        var that = this;
-		        var delta = 200 - Math.random() * 100;
 
-		        if (this.isDeleting) { delta /= 2; }
 
-		        if (!this.isDeleting && this.txt === fullTxt) {
-		        delta = this.period;
-		        this.isDeleting = true;
-		        } else if (this.isDeleting && this.txt === '') {
-		        this.isDeleting = false;
-		        this.loopNum++;
-		        delta = 500;
-		        }
+  </head>
 
-		        setTimeout(function() {
-		        that.tick();
-		        }, delta);
-		    };
+  <body id="page-top">
 
-		    window.onload = function() {
-		        var elements = document.getElementsByClassName('typewrite');
-		        for (var i=0; i<elements.length; i++) {
-		            var toRotate = elements[i].getAttribute('data-type');
-		            var period = elements[i].getAttribute('data-period');
-		            if (toRotate) {
-		              new TxtType(elements[i], JSON.parse(toRotate), period);
-		            }
-		        }
-		        // INJECT CSS
-		        var css = document.createElement("style");
-		        css.type = "text/css";
-		        css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
-		        document.body.appendChild(css);
-		    };
+    <!-- Navigation -->
+    <a class="menu-toggle rounded" href="#">
+      <i class="fas fa-bars"></i>
+    </a>
+    <nav id="sidebar-wrapper">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-item">
+          <a class="js-scroll-trigger" href="#page-top">Home</a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a class="js-scroll-trigger" href="#about">About</a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a class="js-scroll-trigger" href="#services">Services</a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a class="js-scroll-trigger" href="#portfolio">Portfolio</a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a class="js-scroll-trigger" href="#contact">Contact</a>
+        </li>
+      </ul>
+    </nav>
 
-			/*Interactivity to determine when an animated element in in view. In view elements trigger our animation*/
-			$(document).ready(function() {
+    <!-- Header -->
+    <header class="masthead d-flex">
+      <div class="container text-center my-auto">
+        <h1 class="mb-1">Ani Gottiparthy</h1>
+        <h3 class="mb-5">
+          Student, Software Engineer, Strategy Consultant
+        </h3>
+        <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Learn More</a>
+      </div>
+      <div class="overlay"></div>
+    </header>
 
-			  //window and animation items
-				var animation_elements = $.find('.animation-element');
-				var web_window = $(window);
+    <!-- About -->
+    <section class="content-section bg-light" id="about">
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-lg-10 mx-auto">
+            <h2>About Me</h2>
+            <p class="lead mb-5">
+              Hi! I'm a student at UC Berkeley studying Computer Science and Statistics. I love using code to take ideas from my head and turn them into real products. My passion for technology has coincided with an interest in business which I have explored as a startegy consultant for Magic Leap, Grammarly, and SFMoMA. I hope to pursue these interests in tandem as a PM. In my free time I play guitar, read, and write. I love meeting new people! If you'd like to get in contact please email me at gottiparthy.ani@berkeley.edu.</p>
+            <a class="btn btn-dark btn-xl js-scroll-trigger" href="#services">What I Do</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-				  //check to see if any animation containers are currently in view
-				function check_if_in_view() {
-				    //get current window information
-				    var window_height = web_window.height();
-				    var window_top_position = web_window.scrollTop();
-				    var window_bottom_position = (window_top_position + window_height);
+    <!-- Services -->
+    <section class="content-section bg-primary text-white text-center" id="services">
+      <div class="container">
+        <div class="content-section-heading">
+          <h3 class="text-secondary mb-0">Skills</h3>
+          <h2 class="mb-5">What I Do</h2>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+            <span class="service-icon rounded-circle mx-auto mb-3">
+              <i class="icon-pencil"></i>
+            </span>
+            <h4>
+              <strong>UI/UX Design</strong>
+            </h4>
+            <p class="text-faded mb-0">Sketch, HTML, CSS, JS, React, Angular</p>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+            <span class="service-icon rounded-circle mx-auto mb-3">
+              <i class="fab fa-java"></i>
+            </span>
+            <h4>
+              <strong>OOP</strong>
+            </h4>
+            <p class="text-faded mb-0">Java, Python</p>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
+            <span class="service-icon rounded-circle mx-auto mb-3">
+              <i class="far fa-chart-bar"></i>
+            </span>
+            <h4>
+              <strong>Data Analytics</strong>
+            </h4>
+            <p class="text-faded mb-0"> SQL, Python, Machine Learning
+            </p>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <span class="service-icon rounded-circle mx-auto mb-3">
+              <i class="fas fa-sitemap"></i>
+            </span>
+            <h4>
+              <strong>Product Management</strong>
+            </h4>
+            <p class="text-faded mb-0">JIRA, Agile Methodology</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-				    //iterate through elements to see if its in view
-				    $.each(animation_elements, function() {
+    <!-- Portfolio -->
+    <section class="content-section" id="portfolio">
+      <div class="container">
+        <div class="content-section-heading text-center">
+          <h3 class="text-secondary mb-0">Portfolio</h3>
+          <h2 class="mb-5">Recent Projects</h2>
+        </div>
+        <div class="row no-gutters">
+          <div class="col-lg-6">
+            <a class="portfolio-item" href="https://github.com/agottiparthy/Twitter-Sentiment-Analysis">
+              <span class="caption">
+                <span class="caption-content">
+                  <h2>Twitter Sentiment Analysis</h2>
+                  <p class="mb-0">Use NLP and the Twitter API to find overall sentiment towards a user's query. </p>
+                </span>
+              </span>
+              <img class="img-fluid" src="img/portfolio-1.jpg" alt="">
+            </a>
+          </div>
+          <div class="col-lg-6">
+            <a class="portfolio-item" href="#">
+              <span class="caption">
+                <span class="caption-content">
+                  <h2>Strategy Consulting</h2>
+                  <p class="mb-0"> *Under Construction* <br> Samples of my work with Grammarly, SFMoMA, and Magic Leap. </p>
+                </span>
+              </span>
+              <img class="img-fluid" src="img/portfolio-2.jpg" alt="">
+            </a>
+          </div>
+          <div class="col-lg-6">
+            <a class="portfolio-item" href="https://docs.google.com/presentation/d/1CpOYgcSm7IAszAycF9RQDnkJO89pUYNI42MrNI18HEQ/edit?usp=sharing">
+              <span class="caption">
+                <span class="caption-content">
+                  <h2>goods.io</h2>
+                  <p class="mb-0">A blockchain startup working to bring trust and security to second-hand purchases.</p>
+                </span>
+              </span>
+              <img class="img-fluid" src="img/portfolio-3.jpg" alt="">
+            </a>
+          </div>
+          <div class="col-lg-6">
+            <a class="portfolio-item" href="https://medium.com/@anigottiparthy">
+              <span class="caption">
+                <span class="caption-content">
+                  <h2>Blog</h2>
+                  <p class="mb-0">My occasionally updated  blog! I like writing about politics, ethics, and technology.</p>
+                </span>
+              </span>
+              <img class="img-fluid" src="img/portfolio-4.jpg" alt="">
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-				      //get the element sinformation
-				    var element = $(this);
-				    var element_height = $(element).outerHeight();
-				    var element_top_position = $(element).offset().top;
-				    var element_bottom_position = (element_top_position + element_height);
+    <!-- Footer -->
+    <footer class="footer text-center">
+      <div class="container">
+        <ul class="list-inline mb-5">
+          <li class="list-inline-item">
+            <a class="social-link rounded-circle text-white mr-3" href="https://www.facebook.com/ani.gottiparthy">
+              <i class="icon-social-facebook"></i>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a class="social-link rounded-circle text-white mr-3" href="https://www.linkedin.com/in/ani-gottiparthy">
+              <i class="icon-social-linkedin"></i>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a class="social-link rounded-circle text-white" href="https://www.github.com/agottiparthy">
+              <i class="icon-social-github"></i>
+            </a>
+          </li>
+        </ul>
+        <p class="text-muted small mb-0">Copyright &copy; Ani Gottiparthy 2018 all rights reserved</p>
+      </div>
+    </footer>
 
-				      //check to see if this current container is visible (its viewable if it exists between the viewable space of the viewport)
-				    if ((element_bottom_position >= window_top_position) && (element_top_position <= window_bottom_position)) {
-				    	element.addClass('in-view');
-				    	} else {
-				    	element.removeClass('in-view');
-				    	}
-				 	});
-	  			}
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
 
-		  		//on or scroll, detect elements in view
-				$(window).on('scroll resize', function() {
-				    check_if_in_view()
-				})
-				    //trigger our scroll event on initial load
-				$(window).trigger('scroll');
-				});
-	</script>
-</head>
-	<body>
-		<div id="home"> 
-			<div class="topnav">
-				<a href="#contact">Contact</a>
-				<a href="#portfolio">Portfolio</a>
-				<a href="#about">About Me</a>
-				<a class="active" href="#home">Home</a>
-			</div>
-			<p id="name"> ANIRUDH GOTTIPARTHY </p>
-			<h1>
-			  <a href="" class="typewrite" data-period="2000" data-type='[ "Software Engineer", "ML/AI Engineer", "Product Management"]'>
-			    <span class="wrap"></span>
-			  </a>
-			</h1>
-		</div>
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-		<h1> ABOUT ME </h1>
-		<p id="subhead"> Software Engineer &#x00B7 UC Berkeley</p> 
-		<div class="container-fluid" id="about">
-			<div class="row">
-			  <div class="col-md-4">
-			  	<img src="profile.png" id="profile" id="slider" class="animation-element slide-left testimonial">
-			  </div>
-			  <div class="col-md-4">
-			  <h2>Bio</h2>
-				<p id="bio">
-				I'm a second year student at UC Berkeley studying Computer Science and Statistics. Born in the Bay Area, I grew up around startups and cool technology. From playing with legos as a child or chess as a teenager, I've always loved building and problem solving. As I've explored these interests, computer science has become a natural outlet. Diving into the tech world introduced me to the wonders of data, analytics, and AI. I hope to pursue these passions and incorporate my outside interests in business strategy and management in a future career as a product manager. 
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-				<br><br>
+    <!-- Custom scripts for this template -->
+    <script src="js/stylish-portfolio.js"></script>
 
-				In my free time, I like to play basketball, meet new people, read, and write. I keep a blog about politics, AI, and philosophy which you can read at https://medium.com/@anigottiparthy.
-				</p> 
-			  </div>
-			  <div class="col-md-4">
-			  	<h2>Skills</h2>
-				<ul>
-					<li>
-						<img src="webdesign.png" width="60" height="60"> 
-						<p>UI/UX </p>
-						<img src="mySQL.png" width="60" height="60"> 
-						<p>Databases </p>
-						<img src="javapython.png" width="60" height="60"> 
-						<p>Object Oriented Programming </p>
-						<img src="brain.png" width="60" height="60"> 
-						<p>Machine Learning (Novice) </p>
-					</li>
-				</ul>
-			  </div>
-			</div>
-		</div>
-		<div class="container" id="portfolio">
-			<h1> PORTFOLIO </h1>
-			<p id="subhead"> ** Under Construction **</p> 
-			<h3> Technical </h3> 
-			<div class="row">
-				<div class="col-md-4" id="slackbotlogo">
-					<img src="slackbot.jpg" class="company">
-				</div>
-				<div class="col-md-4" id="eprocesslogo">
-					<img src="eprocess.png" class="company">
-				</div>
-				<div class="col-md-4" id="osilogo">
-					<img src="osi.png" class="company">
-				</div>	
-			</div>
-			<br><br>
-			<h3> Strategy </h3> 
-			<div class="row">
-				<div class="col-md-4" id="magicLeaplogo">
-					<img src="magicLeap.png" class="company">
-				</div>
-				<div class="col-md-4" id="sfmomalogo">
-					<img src="SFmoma.png" class="company">
-				</div>
-				<div class="col-md-4" id="grammarlylogo">
-					<img src="grammarly.png" class="company">
-				</div>
-				
-			</div>
-		</div>
-		<div class="container-fluid" id="contact">
-			<h1 style="padding-top: -20px;"> CONTACT </h1>
-			<p> Let's stay in touch! </p>
-			gottiparthy.ani@berkeley.edu <br>
-			(925)-963-6784 <br>
-			linkedin.com/in/ani-gottiparthy
+  </body>
 
-		</div>
-		<p style="text-align: right;"> updated 9/19/2018 </p>
-	</body>
 </html>
