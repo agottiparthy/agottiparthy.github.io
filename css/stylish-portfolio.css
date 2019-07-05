@@ -19,11 +19,6 @@ body {
   padding-bottom: 7.5rem;
 }
 
-.consulting-section {
-  padding-top: 20rem;
-  text-align: left;
-}
-
 .content-section-heading h2 {
   font-size: 3rem;
 }
@@ -86,6 +81,11 @@ h6 {
 
 .scroll-to-top i {
   font-weight: 800;
+}
+
+img {
+  width: 100%;
+  height: auto;
 }
 
 .masthead {
@@ -353,10 +353,10 @@ a:hover, a:focus, a:active {
   color: #fff !important;
 }
 
-.btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active {
+/* .btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active {
   background-color: #ba9106 !important;
   border-color: #ba9106 !important;
-}
+} */
 
 .btn-dark {
   color: #fff !important;
@@ -378,4 +378,17 @@ a:hover, a:focus, a:active {
 
 .text-secondary {
   color: #ecb807 !important;
+}
+
+.company {
+  text-align: center;
+  color: blue;
+}
+
+.sfmoma {
+  -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
 }
